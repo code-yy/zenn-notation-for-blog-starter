@@ -1,6 +1,12 @@
-import { AppProps } from 'next/app'
-import '../styles/index.css'
+import { AppProps } from "next/app";
+import "zenn-content-css";
+import "../styles/index.css";
+import { useEffect } from "react";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  useEffect(() => {
+    import("zenn-embed-elements"); // 数式をブラウザでレンダリングできるようにします
+  }, []);
+
+  return <Component {...pageProps} />;
 }
