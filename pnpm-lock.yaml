@@ -8,7 +8,7 @@ specifiers:
   classnames: ^2.3.1
   date-fns: ^2.28.0
   gray-matter: ^4.0.3
-  next: latest
+  next: '13'
   postcss: ^8.4.14
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -32,7 +32,7 @@ dependencies:
   typescript: 4.9.5
   zenn-content-css: 0.1.142
   zenn-embed-elements: 0.1.142
-  zenn-markdown-html: 0.1.142
+  zenn-markdown-html: 0.1.142_@types+markdown-it@12.2.3
 
 devDependencies:
   '@types/node': 18.15.11
@@ -206,10 +206,25 @@ packages:
       '@types/unist': 2.0.6
     dev: false
 
+  /@types/linkify-it/3.0.2:
+    resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
+    dev: false
+
+  /@types/markdown-it/12.2.3:
+    resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
+    dependencies:
+      '@types/linkify-it': 3.0.2
+      '@types/mdurl': 1.0.2
+    dev: false
+
   /@types/mdast/3.0.11:
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: false
+
+  /@types/mdurl/1.0.2:
+    resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: false
 
   /@types/ms/0.7.31:
@@ -861,12 +876,13 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /markdown-it-anchor/8.6.7_markdown-it@12.3.2:
+  /markdown-it-anchor/8.6.7_2zb4u3vubltivolgu556vv4aom:
     resolution: {integrity: sha512-FlCHFwNnutLgVTflOYHPW2pPcl2AACqVzExlkGQNsi4CJgqOHN7YTgDd4LuhgN1BFO3TS0vLAruV1Td6dwWPJA==}
     peerDependencies:
       '@types/markdown-it': '*'
       markdown-it: '*'
     dependencies:
+      '@types/markdown-it': 12.2.3
       markdown-it: 12.3.2
     dev: false
 
@@ -1796,13 +1812,13 @@ packages:
     resolution: {integrity: sha512-VmHhvzzadon5I9OMdpUH/PlUXCLO+jOzHptNagu9M5kw0YFjIKzl5JcTHIAu3G45qGvFgT0Bb3FnJX35vGH+Yg==}
     dev: false
 
-  /zenn-markdown-html/0.1.142:
+  /zenn-markdown-html/0.1.142_@types+markdown-it@12.2.3:
     resolution: {integrity: sha512-8YSIXgPcbVEdYRT/KSpLWMLGn4HLCrIt0PkQmfHgLqMBpQRibautM3o2qcFjmOK1XLNVTszzIWiVh4gYZr4oaw==}
     dependencies:
       '@steelydylan/markdown-it-imsize': 1.0.2
       cheerio: 1.0.0-rc.12
       markdown-it: 12.3.2
-      markdown-it-anchor: 8.6.7_markdown-it@12.3.2
+      markdown-it-anchor: 8.6.7_2zb4u3vubltivolgu556vv4aom
       markdown-it-container: 2.0.0
       markdown-it-footnote: 3.0.3
       markdown-it-inline-comments: 1.0.1
