@@ -11,6 +11,8 @@ import Head from "next/head";
 import { CMS_NAME } from "../../lib/constants";
 import markdownToHtml from "zenn-markdown-html";
 import type PostType from "../../interfaces/post";
+import { useEffect } from "react";
+import Script from "next/script";
 
 type Props = {
   post: PostType;
@@ -21,34 +23,33 @@ type Props = {
 export default function Post({ post, morePosts, preview }: Props) {
   const router = useRouter();
   const title = `${post.title} | Next.js Blog Example with ${CMS_NAME}`;
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout preview={preview}>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32 znc">
-              <Head>
-                <title>{title}</title>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
-          </>
-        )}
-      </Container>
-    </Layout>
+    <>
+      <Layout preview={preview}>
+        <Container>
+          <Header />
+          {router.isFallback ? (
+            <PostTitle>Loading…</PostTitle>
+          ) : (
+            <>
+              <article className="mb-32 znc">
+                <PostHeader
+                  title={post.title}
+                  coverImage={post.coverImage}
+                  date={post.date}
+                  author={post.author}
+                />
+                <PostBody content={post.content} />
+              </article>
+            </>
+          )}
+        </Container>
+      </Layout>
+    </>
   );
 }
 
@@ -68,7 +69,9 @@ export async function getStaticProps({ params }: Params) {
     "ogImage",
     "coverImage",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  const content = markdownToHtml(post.content, {
+    embedOrigin: "https://embed.zenn.studio",
+  });
 
   return {
     props: {
