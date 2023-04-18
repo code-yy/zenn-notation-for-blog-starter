@@ -13,12 +13,7 @@ const Layout = ({ preview, children }: Props) => {
   return (
     <>
       <Meta />
-
-      <Script
-        src="https://embed.zenn.studio/js/listen-embed-event.js"
-        strategy="lazyOnload"
-      />
-
+      <Script src="https://embed.zenn.studio/js/listen-embed-event.js" />
       <div className="min-h-screen">
         <Alert preview={preview} />
         <main>{children}</main>

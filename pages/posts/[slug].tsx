@@ -69,7 +69,9 @@ export async function getStaticProps({ params }: Params) {
     "ogImage",
     "coverImage",
   ]);
-  const content = markdownToHtml(post.content || "");
+  const content = markdownToHtml(post.content, {
+    embedOrigin: "https://embed.zenn.studio",
+  });
 
   return {
     props: {
